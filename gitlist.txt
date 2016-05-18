@@ -1,0 +1,41 @@
+git list:
+
+1、git add file添加文件时出现这样错误：
+fatal: Not a git repository (or any of the parent directories): .git
+提示说没有.git这样一个目录，解决办法如下：
+git init就可以了！
+
+2、github上传时出现error: src refspec master does not match any解决办法
+引起该错误的原因是，目录中没有文件，空目录是不能提交上去的
+解决方法
+touch README
+git add README 
+git commit -m 'first commit'
+git push origin master
+
+实际上
+git init
+这一步之后创建了一个名为.git的文件夹，不过它在默认状态下是隐藏的，系统将隐藏文件夹显示出来，可以看到有这样一个文件夹。
+
+大致流程是：
+
+    1、在github上创建项目
+
+    2、使用git clone https://github.com/xxxxxxx/xxxxx.git克隆到本地
+
+    3、编辑项目
+
+    4、git add . （将改动添加到暂存区）
+
+    5、git commit -m "提交说明"
+
+    6、git push origin master 将本地更改推送到远程master分支。
+
+    这样你就完成了向远程仓库的推送。
+
+如果在github的remote上已经有了文件，会出现错误。此时应当先pull一下，即：
+git pull origin master
+然后再进行：
+git push origin master
+
+3、
